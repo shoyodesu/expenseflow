@@ -213,7 +213,7 @@
                 @if(Auth::user()->avatar)
                     <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="">
                 @else
-                    <img src="{{ asset('images/default-avatar.png') }}" alt="">
+                    <img src="{{ asset('images/pfp.jpg') }}" alt="">
                 @endif
             </div>
             <div>

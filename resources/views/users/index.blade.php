@@ -14,7 +14,7 @@
 <form method="GET" class="row g-2 mb-4">
     <div class="col-12 col-md-6">
         <input type="text" name="search" class="form-control"
-               placeholder="🔍 Search name or email…" value="{{ request('search') }}">
+               placeholder="Search name or email…" value="{{ request('search') }}">
     </div>
     <div class="col-6 col-md-3">
         <select name="role" class="form-select" onchange="this.form.submit()">
@@ -46,11 +46,7 @@
                                 <img src="{{ asset('storage/'.$user->avatar) }}"
                                      style="width:32px;height:32px;border-radius:50%;object-fit:cover">
                             @else
-                                <div style="width:32px;height:32px;border-radius:50%;background:var(--yellow);
-                                            display:flex;align-items:center;justify-content:center;
-                                            font-weight:800;font-size:13px;color:#1A1A2E;flex-shrink:0">
-                                    {{ strtoupper(substr($user->name,0,1)) }}
-                                </div>
+                                <img src="{{ asset('images/default-avatar.png') }}" alt="">
                             @endif
                             <span style="font-weight:500">{{ $user->name }}</span>
                         </div>

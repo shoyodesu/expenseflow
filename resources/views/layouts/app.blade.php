@@ -181,7 +181,7 @@
 
 <!-- Sidebar -->
 <aside class="sidebar" id="sidebar">
-    <div class="sidebar-logo">⚡ Expense<span>Flow</span></div>
+    <div class="sidebar-logo">Expense<span>Flow</span></div>
 
     <div class="nav-section-label">Main</div>
     <a href="{{ route('dashboard') }}" class="sidebar-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">

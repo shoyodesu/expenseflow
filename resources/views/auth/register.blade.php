@@ -8,7 +8,7 @@
         <p class="text-muted mt-1" style="font-size:13px">Create your free account</p>
     </div>
 
-    <h2 class="mb-4" style="font-size:20px">Get started 💰</h2>
+    <h2 class="mb-4" style="font-size:20px">Sign Up</h2>
 
     @if($errors->any())
     <div class="alert alert-danger py-2 mb-3" style="font-size:13px;border-radius:8px">

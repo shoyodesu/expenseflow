@@ -13,12 +13,8 @@
                     <img src="{{ asset('storage/'.$user->avatar) }}"
                          style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid var(--yellow)">
                 @else
-                    <div style="width:90px;height:90px;border-radius:50%;background:var(--yellow);
-                                display:flex;align-items:center;justify-content:center;
-                                font-family:'Syne',sans-serif;font-weight:800;font-size:34px;
-                                color:#1A1A2E;margin:0 auto;border:3px solid var(--yellow-dark)">
-                        {{ strtoupper(substr($user->name,0,1)) }}
-                    </div>
+                    <img src="{{ asset('images/pfp.jpg') }}"
+                        style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid var(--yellow)">
                 @endif
             </div>
             <h5 class="fw-bold mb-1" style="font-family:'Syne',sans-serif">{{ $user->name }}</h5>

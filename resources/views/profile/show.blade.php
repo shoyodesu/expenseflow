@@ -94,7 +94,7 @@
                     <div class="col-12">
                         <label class="form-label">Address</label>
                         <textarea name="address" class="form-control" rows="2"
-                                  placeholder="123 Rizal St, Quezon City">{{ old('address', $user->address) }}</textarea>
+                                  placeholder="123 St, Biringan City">{{ old('address', $user->address) }}</textarea>
                     </div>
 
                     <div class="col-12">

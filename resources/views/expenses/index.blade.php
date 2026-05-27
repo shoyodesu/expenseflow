@@ -13,7 +13,7 @@
 {{-- Filters --}}
 <form method="GET" class="row g-2 mb-4" id="filterForm">
     <div class="col-12 col-md-5">
-        <input type="text" name="search" class="form-control" placeholder="🔍 Search descriptions…"
+        <input type="text" name="search" class="form-control" placeholder="Search descriptions…"
                value="{{ request('search') }}">
     </div>
     <div class="col-6 col-md-3">

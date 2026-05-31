@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta property="og:title" content="ExpenseFlow">
+    <meta property="og:description" content="Expense Tracking and Financial Management System">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://expense-flow.up.railway.app">
     <title>@yield('title', 'ExpenseFlow') — ExpenseFlow</title>
 
     <!-- Bootstrap 5 -->
@@ -30,7 +34,7 @@
         body { font-family: 'DM Sans', sans-serif; background: #F4F5F8; }
         h1,h2,h3,h4,h5,h6,.fw-bold,.sidebar-logo { font-family: 'Syne', sans-serif; }
 
-        /* ── Sidebar ── */
+        /* Sidebar */
         .sidebar {
             width: var(--sidebar-w);
             background: var(--sidebar-bg);
@@ -86,7 +90,7 @@
         .sidebar-user-name { font-size: 13px; font-weight: 600; color: #fff; }
         .sidebar-user-role { font-size: 11px; color: rgba(255,255,255,.4); }
 
-        /* ── Main ── */
+        /* Main */
         .main-wrapper { margin-left: var(--sidebar-w); min-height: 100vh; }
         .topbar {
             background: #fff;
@@ -99,7 +103,7 @@
         .topbar-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; color: #1A1A2E; }
         .page-content { padding: 24px; }
 
-        /* ── Cards ── */
+        /* Cards */
         .stat-card {
             background: #fff; border-radius: 12px;
             padding: 20px; border: 1px solid #E8E8F0;
@@ -119,18 +123,18 @@
         }
         .stat-label { font-size: 12px; font-weight: 600; color: #9090A8; text-transform: uppercase; letter-spacing: .5px; }
 
-        /* ── Buttons ── */
+        /* Buttons */
         .btn-yellow { background: var(--yellow); color: #1A1A2E; font-weight: 700; border: none; }
         .btn-yellow:hover { background: var(--yellow-dark); color: #1A1A2E; }
 
-        /* ── Table ── */
+        /* Table */
         .table-card { background: #fff; border-radius: 12px; border: 1px solid #E8E8F0; overflow: hidden; }
         .table thead th { background: #F7F7FB; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #9090A8; border-bottom: 1px solid #E8E8F0; padding: 12px 16px; }
         .table tbody td { padding: 12px 16px; vertical-align: middle; font-size: 14px; color: #2A2A3C; border-bottom: 1px solid #F0F0F6; }
         .table tbody tr:last-child td { border-bottom: none; }
         .table tbody tr:hover td { background: var(--yellow-light); }
 
-        /* ── Badges ── */
+        /* Badges */
         .badge-category { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 99px; }
         .cat-food { background: #FFF3CD; color: #856404; }
         .cat-transport { background: #D1ECF1; color: #0C5460; }
@@ -143,20 +147,20 @@
         .badge-admin { background: var(--yellow-light); color: var(--yellow-dark); }
         .badge-user { background: #E8E8F0; color: #6060A0; }
 
-        /* ── Form ── */
+        /* Form */
         .form-control:focus, .form-select:focus {
             border-color: var(--yellow);
             box-shadow: 0 0 0 3px rgba(245,200,0,.2);
         }
         .form-label { font-size: 12px; font-weight: 700; color: #6060A0; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
 
-        /* ── Toast ── */
+        /* Toast */
         .toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
         .toast { border-radius: 10px; font-size: 14px; min-width: 280px; }
         .toast-success { background: #1A1A2E; border-left: 4px solid var(--yellow); color: #fff; }
         .toast-error   { background: #1A1A2E; border-left: 4px solid #E05050; color: #fff; }
 
-        /* ── Mobile ── */
+        /* Mobile */
         @media (max-width: 767px) {
             .sidebar { transform: translateX(-100%); }
             .sidebar.show { transform: translateX(0); }
@@ -166,7 +170,7 @@
             .stat-value { font-size: 20px; }
         }
 
-        /* ── Overlay ── */
+        /* Overlay */
         .sidebar-overlay {
             display: none; position: fixed; inset: 0;
             background: rgba(0,0,0,.5); z-index: 999;
@@ -192,36 +196,44 @@
     </a>
     @if(auth()->user()->isAdmin())
     <a href="{{ route('users.index') }}" class="sidebar-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
-        <i class="bi bi-people-fill"></i> Users
+        <i class="bi bi-people-fill"></i> User Management
     </a>
     @endif
     <a href="{{ route('profile.show') }}" class="sidebar-link {{ request()->routeIs('profile.*') ? 'active' : '' }}">
         <i class="bi bi-person-circle"></i> Profile
     </a>
-
-    <div class="nav-section-label">Account</div>
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit" class="sidebar-link w-100 text-start" style="background:none;border:none;cursor:pointer">
-            <i class="bi bi-box-arrow-left"></i> Logout
-        </button>
-    </form>
-
+    
     <div class="sidebar-footer">
-        <div class="sidebar-user">
-            <div class="sidebar-user-avatar">
-                @if(Auth::user()->avatar)
-                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="">
-                @else
-                    <img src="{{ asset('images/pfp.jpg') }}" alt="">
-                @endif
+    <div class="sidebar-user">
+        <div class="sidebar-user-avatar">
+            @if(Auth::user()->avatar)
+                <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="">
+            @else
+                <img src="{{ asset('images/pfp.jpg') }}" alt="">
+            @endif
+        </div>
+
+        <div class="flex-grow-1">
+            <div class="sidebar-user-name">
+                {{ Str::limit(Auth::user()->name, 18) }}
             </div>
-            <div>
-                <div class="sidebar-user-name">{{ Str::limit(Auth::user()->name, 18) }}</div>
-                <div class="sidebar-user-role">{{ ucfirst(Auth::user()->role) }}</div>
+            <div class="sidebar-user-role">
+                {{ ucfirst(Auth::user()->role) }}
             </div>
         </div>
+
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button
+                type="submit"
+                class="btn p-0 border-0 text-warning"
+                style="background:none;"
+                title="Logout">
+                <i class="bi bi-box-arrow-right fs-5"></i>
+            </button>
+        </form>
     </div>
+</div>
 </aside>
 
 <!-- Main -->

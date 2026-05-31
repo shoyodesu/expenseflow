@@ -13,7 +13,7 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
 
-        // ── Stat cards ─────────────────────────────────
+        // Stat cards
         $totalExpenses    = Expense::where('user_id', $user->id)->sum('amount');
         $monthlyExpenses  = Expense::where('user_id', $user->id)
             ->whereMonth('expense_date', now()->month)
@@ -23,7 +23,7 @@ class DashboardController extends Controller
         $totalCategories  = Expense::where('user_id', $user->id)
             ->distinct('category')->count('category');
 
-        // ── Monthly bar chart (last 12 months) ─────────
+        // Monthly bar chart (last 12 months) 
         $monthlyData = Expense::where('user_id', $user->id)
             ->where('expense_date', '>=', now()->subMonths(11)->startOfMonth())
             ->select(
@@ -44,14 +44,14 @@ class DashboardController extends Controller
             $amounts[] = $match ? (float)$match->total : 0;
         }
 
-        // ── Category donut ──────────────────────────────
+        // Category donut
         $categoryData = Expense::where('user_id', $user->id)
             ->select('category', DB::raw('SUM(amount) as total'))
             ->groupBy('category')
             ->orderByDesc('total')
             ->get();
 
-        // ── Recent expenses ─────────────────────────────
+        // Recent expenses
         $recentExpenses = Expense::where('user_id', $user->id)
             ->orderByDesc('expense_date')
             ->limit(5)

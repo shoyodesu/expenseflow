@@ -10,8 +10,7 @@ use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
 {
-    // ── Registration ──────────────────────────────────────────
-
+    // Registration
     public function showRegister()
     {
         return view('auth.register');
@@ -36,7 +35,7 @@ class AuthController extends Controller
             ->with('toast_success', 'Account created successfully! Please log in.');
     }
 
-    // ── Login ─────────────────────────────────────────────────
+    // Login
 
     public function showLogin()
     {
@@ -61,7 +60,7 @@ class AuthController extends Controller
             ->with('toast_error', 'These credentials do not match our records.');
     }
 
-    // ── Logout ────────────────────────────────────────────────
+    // Logout
 
     public function logout(Request $request)
     {

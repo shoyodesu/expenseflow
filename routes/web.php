@@ -7,7 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-// ── Public ────────────────────────────────────────────
+// Public
 Route::middleware('guest')->group(function () {
     Route::get('/',         [AuthController::class, 'showLogin'])->name('home');
     Route::get('/login',    [AuthController::class, 'showLogin'])->name('login');
@@ -16,7 +16,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/register',[AuthController::class, 'register']);
 });
 
-// ── Authenticated ─────────────────────────────────────
+// Authenticated
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 

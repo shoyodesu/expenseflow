@@ -46,7 +46,8 @@
                                 <img src="{{ asset('storage/'.$user->avatar) }}"
                                      style="width:32px;height:32px;border-radius:50%;object-fit:cover">
                             @else
-                                <img src="{{ asset('images/default-avatar.png') }}" alt="">
+                                <img src="{{ asset('images/pfp.jpg') }}" alt=""
+                                     style="width:32px;height:32px;border-radius:50%;object-fit:cover">
                             @endif
                             <span style="font-weight:500">{{ $user->name }}</span>
                         </div>

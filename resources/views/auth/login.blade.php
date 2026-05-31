@@ -5,10 +5,8 @@
 <div class="auth-card">
     <div class="text-center mb-4">
         <div class="auth-logo">Expense<span>Flow</span></div>
-        <p class="text-muted mt-1" style="font-size:13px">Track smarter, spend wiser</p>
+        <p class="text-muted mt-1" style="font-size:13px">Log In to your account</p>
     </div>
-
-    <h2 class="mb-4" style="font-size:20px">Login</h2>
 
     @if($errors->any())
     <div class="alert alert-danger py-2 mb-3" style="font-size:13px;border-radius:8px">

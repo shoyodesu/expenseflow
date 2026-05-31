@@ -195,45 +195,49 @@
         <i class="bi bi-receipt"></i> My Expenses
     </a>
     @if(auth()->user()->isAdmin())
+    <div class="nav-section-label">Admin</div>
     <a href="{{ route('users.index') }}" class="sidebar-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
         <i class="bi bi-people-fill"></i> User Management
     </a>
     @endif
+    <div class="nav-section-label">Profile</div>
     <a href="{{ route('profile.show') }}" class="sidebar-link {{ request()->routeIs('profile.*') ? 'active' : '' }}">
         <i class="bi bi-person-circle"></i> Profile
     </a>
     
     <div class="sidebar-footer">
-    <div class="sidebar-user">
-        <div class="sidebar-user-avatar">
-            @if(Auth::user()->avatar)
-                <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="">
-            @else
-                <img src="{{ asset('images/pfp.jpg') }}" alt="">
-            @endif
-        </div>
+        <div class="sidebar-user">
+            <a href="{{ route('profile.show') }}" class="d-flex align-items-center gap-2 flex-grow-1 text-decoration-none">
+                <div class="sidebar-user-avatar">
+                    @if(Auth::user()->avatar)
+                        <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="">
+                    @else
+                        <img src="{{ asset('images/pfp.jpg') }}" alt="">
+                    @endif
+                </div>
 
-        <div class="flex-grow-1">
-            <div class="sidebar-user-name">
-                {{ Str::limit(Auth::user()->name, 18) }}
-            </div>
-            <div class="sidebar-user-role">
-                {{ ucfirst(Auth::user()->role) }}
-            </div>
-        </div>
+                <div class="flex-grow-1">
+                    <div class="sidebar-user-name">
+                        {{ Str::limit(Auth::user()->name, 18) }}
+                    </div>
+                    <div class="sidebar-user-role">
+                        {{ ucfirst(Auth::user()->role) }}
+                    </div>
+                </div>
+            </a>
 
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button
-                type="submit"
-                class="btn p-0 border-0 text-warning"
-                style="background:none;"
-                title="Logout">
-                <i class="bi bi-box-arrow-right fs-5"></i>
-            </button>
-        </form>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button
+                    type="submit"
+                    class="btn p-0 border-0 text-warning"
+                    style="background:none;"
+                    title="Logout">
+                    <i class="bi bi-box-arrow-right fs-5"></i>
+                </button>
+            </form>
+        </div>
     </div>
-</div>
 </aside>
 
 <!-- Main -->

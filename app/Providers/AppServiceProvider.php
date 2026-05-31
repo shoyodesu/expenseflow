@@ -2,26 +2,24 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate; // Add this import at the top
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\URL;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
-        // Define who is allowed to manage users
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
+
         Gate::define('admin-only', function (User $user) {
             return $user->role === 'admin';
         });
